@@ -49,7 +49,7 @@ public class SelenideTest {
         $(".icon_name_calendar").click();
         $(".calendar").shouldBe(visible);
         int safetyNet = 0;
-        while (!$(".calendar__name").text().equals(MonthYear) && safetyNet < 13) {
+        while (!$(".calendar__name").text().equals(MonthYear) && safetyNet < 12) {
             $(".calendar__arrow_direction_right[data-step='1']").click();
             safetyNet++;
         }
