@@ -17,7 +17,8 @@ import static com.codeborne.selenide.Selenide.$$;
 public class SelenideTest {
 
     public String generateData(int data, String pattern) {
-        return LocalDate.now().plusDays(data).format(DateTimeFormatter.ofPattern(pattern));
+        return LocalDate.now().plusDays(data)
+                .format(DateTimeFormatter.ofPattern(pattern, new java.util.Locale("ru")));
     }
 
     @Test
@@ -38,9 +39,9 @@ public class SelenideTest {
 
     @Test
     void interactingActiveElements() {
-        String plamingDate = generateData(4, "dd.MM.yyyy");
+        String plamingDate = generateData(40, "dd.MM.yyyy");
         String dayClick = String.valueOf(Integer.parseInt(plamingDate.substring(0, 2)));
-        String MonthYear = generateData(4, "LLLL yyyy");
+        String MonthYear = generateData(40, "LLLL yyyy");
         MonthYear = MonthYear.substring(0, 1).toUpperCase() + MonthYear.substring(1);
 
         Selenide.open("http://localhost:9999/");
