@@ -16,7 +16,7 @@ import static com.codeborne.selenide.Selenide.$$;
 
 public class SelenideTest {
 
-    publig generateData(int data, String pattern) {
+    public String generateData(int data, String pattern) {
         return LocalDate.now().plusDays(data)
                 .format(DateTimeFormatter.ofPattern(pattern, new java.util.Locale("ru")));
     }
