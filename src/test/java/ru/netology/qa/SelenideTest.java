@@ -9,8 +9,6 @@ import org.openqa.selenium.Keys;
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.Locale;
-
 
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.$;
@@ -50,10 +48,10 @@ public class SelenideTest {
         $$(".menu-item").findBy(text("Москва")).click();
         $(".icon_name_calendar").click();
         $(".calendar").shouldBe(visible);
-       
-        while (!$(".calendar__name").text().equals(MonthYear)) {
+        int safetyNet = 0;
+        while (!$(".calendar__name").text().equals(MonthYear) && safetyNet < 13) {
             $(".calendar__arrow_direction_right[data-step='1']").click();
-
+            safetyNet++;
         }
         $$(".calendar__day").filter(visible).findBy(exactText(dayClick)).click();
         $("[data-test-id='name'] input").setValue("Иванов Иван");
